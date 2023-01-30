@@ -13,6 +13,7 @@ namespace kml {
     double Intervall::getMax() const { return max; }
     bool Intervall::getMinInclude() const { return minIncl; }
     bool Intervall::getMaxInclude() const { return maxIncl; }
+    std::unique_ptr<Set> Intervall::clone() const { return std::make_unique<Intervall>(*this); }
 
     bool Intervall::isEmpty() const { return min > max || (min >= max && !(minIncl && maxIncl)); }
 
@@ -50,7 +51,7 @@ namespace kml {
 
     bool Intervall::_isSubset(const Set&) const { return false; }  
 
-    std::string Intervall::toString() {
+    std::string Intervall::toString() const {
         std::string str = "";
         str += minIncl ? "[" : "]";
         std::string minStr = std::to_string(min);
@@ -64,5 +65,5 @@ namespace kml {
         return str;
     } 
 
-    std::string Intervall::toStringASCII() { return toString(); }	
+    std::string Intervall::toStringASCII() const { return toString(); }	
 }

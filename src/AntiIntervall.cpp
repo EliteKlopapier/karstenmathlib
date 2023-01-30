@@ -14,6 +14,7 @@ namespace kml {
     bool AntiIntervall::getLowInclude() const { return lowIncl; }
     bool AntiIntervall::getHighInclude() const { return highIncl; }
     bool AntiIntervall::isEmpty() const { return !isinf; }
+    std::unique_ptr<Set> AntiIntervall::clone() const { return std::make_unique<AntiIntervall>(*this); }
 
     bool AntiIntervall::contains(double element) {
         return ((lowIncl && element <= low) || (!lowIncl && element < low)) || ((highIncl && element >= high) || (!highIncl && element > high));
@@ -34,9 +35,7 @@ namespace kml {
     bool AntiIntervall::contains(long long int element) {
         return ((lowIncl && element <= low) || (!lowIncl && element < low)) || ((highIncl && element >= high) || (!highIncl && element > high));
     }
-
-    template <typename T> bool contains(const T) { return true; }
-
+    
     bool AntiIntervall::_isSubset(const Q&) const { return true; }
 
     bool AntiIntervall::_isSubset(const AntiIntervall& aintv) const {
@@ -50,7 +49,7 @@ namespace kml {
 
     bool AntiIntervall::_isSubset(const Set&) const { return false; }
 
-    std::string AntiIntervall::toString() {
+    std::string AntiIntervall::toString() const {
         std::string str = "";
         str += lowIncl ? "]" : "[";
         std::string lowStr = std::to_string(low);
@@ -65,7 +64,7 @@ namespace kml {
         return str;
     } 
 
-    std::string AntiIntervall::toStringASCII() {
+    std::string AntiIntervall::toStringASCII() const {
         return toString();
     }
 }
