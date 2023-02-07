@@ -1,5 +1,5 @@
 #include <cmath> 
-#include "karstenmathlib.hpp"
+#include "Intervall.hpp"
 
 namespace kml {
 

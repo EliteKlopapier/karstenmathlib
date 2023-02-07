@@ -1,4 +1,4 @@
-#include "karstenmathlib.hpp"
+#include "ComplementarySet.hpp"
 
 namespace kml {
 
@@ -33,6 +33,6 @@ namespace kml {
     }
 
     bool ComplementarySet::_isSubset(const Set& set) const {
-        return ComplementarySet(set).isSubset(ComplementarySet::complementOf); // <--- Schnittmenge vom Original und set empty?
+        return  false;// ComplementarySet(set).isSubset(ComplementarySet::complementOf); // <--- Schnittmenge vom Original und set empty?
     }
 }

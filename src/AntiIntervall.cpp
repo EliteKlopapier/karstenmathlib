@@ -1,4 +1,4 @@
-#include "karstenmathlib.hpp"
+#include "AntiIntervall.hpp"
 #include <cmath>
 
 namespace kml {
@@ -35,7 +35,7 @@ namespace kml {
     bool AntiIntervall::contains(long long int element) {
         return ((lowIncl && element <= low) || (!lowIncl && element < low)) || ((highIncl && element >= high) || (!highIncl && element > high));
     }
-    
+
     bool AntiIntervall::_isSubset(const Q&) const { return true; }
 
     bool AntiIntervall::_isSubset(const AntiIntervall& aintv) const {

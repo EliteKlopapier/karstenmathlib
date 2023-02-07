@@ -1,4 +1,4 @@
-#include "karstenmathlib.hpp"
+#include "Set.hpp"
 
 namespace kml {
 
@@ -15,8 +15,7 @@ namespace kml {
     }
 
     bool Set::isSubset(const Set& set) const {
-        if(id == set.getId() && (id == "empty" || id == "universal" || id == "q" || id == "z" || id == "n" || id == "n0")) return true; //<---- in einzelne klassen auslagern
-        else if((isinf && !set.isInfinite()) || (set.isEmpty() && !isEmpty())) return false;
+        if((isinf && !set.isInfinite()) || (set.isEmpty() && !isEmpty())) return false;
         else if(set.getId() == "universal" || isEmpty()) return true; //<---- leeres Intervall??
         else return _isSubset(set);
     }
