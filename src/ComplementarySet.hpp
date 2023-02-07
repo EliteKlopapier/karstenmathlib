@@ -28,5 +28,13 @@ namespace kml {
         bool _isSubset(const Set&) const;
         const Set& complementOf;
     };
+
+    std::unique_ptr<UniversalSet> operator!(EmptySet&);
+    std::unique_ptr<EmptySet> operator!(UniversalSet&);
+    std::unique_ptr<Set> operator!(ComplementarySet&);
+    std::unique_ptr<AntiIntervall> operator!(Intervall&);
+    std::unique_ptr<Intervall> operator!(AntiIntervall&);
+    std::unique_ptr<ComplementarySet> operator!(Set&);
+    
 }
 #endif // ifndef COMPLEMENTARYSET

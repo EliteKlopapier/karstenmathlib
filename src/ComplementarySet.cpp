@@ -23,6 +23,13 @@ namespace kml {
         return std::make_unique<ComplementarySet>(ComplementarySet(complementOf));
     }
 
+    std::unique_ptr<UniversalSet> operator!(EmptySet& set) { return ComplementarySet::Complementary(set); }
+    std::unique_ptr<EmptySet> operator!(UniversalSet& set) { return ComplementarySet::Complementary(set); }
+    std::unique_ptr<Set> operator!(ComplementarySet& set) { return ComplementarySet::Complementary(set); }
+    std::unique_ptr<AntiIntervall> operator!(Intervall& set) { return ComplementarySet::Complementary(set); }
+    std::unique_ptr<Intervall> operator!(AntiIntervall& set) { return ComplementarySet::Complementary(set); }
+    std::unique_ptr<ComplementarySet> operator!(Set& set) { return ComplementarySet::Complementary(set); }
+
     bool ComplementarySet::isEmpty() const { return false; }
     std::string ComplementarySet::toString() const { return complementOf.toString() + "'"; }
     std::string ComplementarySet::toStringASCII() const { return complementOf.toStringASCII() + "'"; }

@@ -16,7 +16,7 @@ namespace kml {
 
     bool Set::isSubset(const Set& set) const {
         if((isinf && !set.isInfinite()) || (set.isEmpty() && !isEmpty())) return false;
-        else if(set.getId() == "universal" || isEmpty()) return true; //<---- leeres Intervall??
+        else if(set.getId() == "universal" || isEmpty()) return true;
         else return _isSubset(set);
     }
 
