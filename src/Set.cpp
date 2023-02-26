@@ -14,8 +14,6 @@ namespace kml {
         return isSubset(set) && set.isSubset(*this);
     }
 
-    std::ostream& operator<<(std::ostream& os, const Set& set) { return os << set.toStringASCII(); }
-
     bool Set::isSubset(const Set& set) const {
         if((isinf && !set.isInfinite()) || (set.isEmpty() && !isEmpty())) return false;
         else if(set.getId() == "universal" || isEmpty()) return true;
