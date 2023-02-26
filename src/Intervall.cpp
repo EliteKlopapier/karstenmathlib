@@ -5,7 +5,7 @@ namespace kml {
 
     Intervall::Intervall(double min, double max, bool minInclusive, bool maxInclusive)
         : min(min), max(max), minIncl(minInclusive), maxIncl(maxInclusive) {
-            isinf = std::isinf(min) || std::isinf(max);
+            isinf = min < max; //std::isinf(min) || std::isinf(max);
             id = "intervall";
         }
 

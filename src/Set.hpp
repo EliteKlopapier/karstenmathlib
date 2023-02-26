@@ -14,7 +14,7 @@ namespace kml {
         bool isProperSubset(const Set&) const;
         bool isSuperset(const Set&) const;
         bool isProperSuperset(const Set&) const;
-        virtual std::unique_ptr<Set> clone() const = 0;
+        //virtual std::unique_ptr<Set> clone() const = 0;
         virtual std::string toString() const = 0;
         virtual std::string toStringASCII() const = 0;
         bool operator<=(const Set&);
@@ -27,6 +27,8 @@ namespace kml {
         bool isinf;
         std::string id;
     };
+
+    std::ostream& operator<<(std::ostream& os, const Set& set);
 }
 
 #endif // ifndef SET

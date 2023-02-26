@@ -4,11 +4,13 @@
 
 // For testing purposes
 
+using namespace kml;
+
 int main(void)
 {
-    //kml::CustomSet emptySet(false, [=](int element){ return false; }, [=](const kml::Set& set){ return true; }, "empty");
-    kml::Intervall i(1,2);
-    std::unique_ptr<kml::AntiIntervall> a = !i;
-    std::cout << a->contains(2);
+    Intervall i(1,2);
+    Q q();
+    auto a = ComplementarySet<Q>::complementary(q);
+    std::cout << a;
     return 0;
 }
