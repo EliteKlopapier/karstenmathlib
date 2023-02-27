@@ -17,19 +17,14 @@ namespace kml {
         bool getMinInclude() const;
         bool getMaxInclude()const ; 
         bool isEmpty() const;
-        bool contains(double);
-        bool contains(float);
-        bool contains(int);
-        bool contains(long int);
-        bool contains(long long int);
-        template <typename T> bool contains(const T element) { return false; }
+        bool contains(const std::any&);
         virtual std::unique_ptr<Set> clone() const;
         std::string toString() const;
         std::string toStringASCII() const;
     private:
         bool _isSubset(const Q&) const;
         bool _isSubset(const Intervall&) const;
-        bool _isSubset(const AntiIntervall&) const;
+        //bool _isSubset(const AntiIntervall&) const;
         bool _isSubset(const Set&) const;
         double min;
         double max;

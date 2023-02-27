@@ -1,6 +1,6 @@
 #include "AntiIntervall.hpp"
 #include <cmath>
-
+/*
 namespace kml {
 
     AntiIntervall::AntiIntervall(double low, double high, bool lowInclude, bool highInclude)
@@ -67,4 +67,4 @@ namespace kml {
     std::string AntiIntervall::toStringASCII() const {
         return toString();
     }
-}
+}*/

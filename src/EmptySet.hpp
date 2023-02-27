@@ -7,7 +7,7 @@
 namespace kml {
     class EmptySet : public Set {
     public:
-        template <typename T> bool contains(const T) { return false; }
+        bool contains(const std::any&) { return false; }
         EmptySet() { isinf = false; id = "empty"; }
         bool isEmpty() const { return true; }
         std::string toString() const { return "Ø"; }

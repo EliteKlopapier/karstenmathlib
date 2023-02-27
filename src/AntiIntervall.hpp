@@ -4,7 +4,7 @@
     #include "Set.hpp"
     #include <string>
     #include <memory>
-
+/*
 namespace kml {
     class Q;
     class Intervall;
@@ -37,5 +37,5 @@ namespace kml {
         bool highIncl;
     };
 }
-
+*/
 #endif // ifndef ANTIINTERVALL

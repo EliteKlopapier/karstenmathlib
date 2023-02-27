@@ -5,12 +5,29 @@
     #include <string>
     #include <cmath>
     #include "Set.hpp"
+    #include "typeid_typetraits.hpp"
 
 namespace kml {
     // Set of integers
     class Z : public Set {
     public:
-        template <typename T> bool contains(const T element) { return std::is_arithmetic<T>::value && std::round(element) == element; }
+        bool contains(const std::any& element) { 
+            if(isIntegral(element.type()))
+                return true;
+            else if(element.type() == typeid(float)){
+                float e = std::any_cast<float>(element);
+                return std::round(e) == e;
+            }
+            else if(element.type() == typeid(double)) {
+                double e = std::any_cast<double>(element);
+                return std::round(e) == e;
+            }
+            else if(element.type() == typeid(long double)) {
+                long double e = std::any_cast<long double>(element);
+                return std::round(e) == e;
+            }
+            else return false; 
+        }
         Z() { isinf = true; id = "z"; }
         bool isEmpty() const { return false; }
         std::string toString() const { return "ℤ"; }

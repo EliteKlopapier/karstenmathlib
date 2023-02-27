@@ -2,6 +2,7 @@
     #define SET
     #include <memory>
     #include <string>
+    #include <any>
 
 namespace kml {
     class ComplementarySet;
@@ -11,7 +12,7 @@ namespace kml {
         bool isInfinite() const;
         std::string getId() const;
         virtual bool isEmpty() const = 0;
-        template <typename T> bool contains(const T); // { return false; }
+        virtual bool contains(const std::any&) = 0; // { return false; }
         bool isSubset(const Set&) const;
         bool isProperSubset(const Set&) const;
         bool isSuperset(const Set&) const;

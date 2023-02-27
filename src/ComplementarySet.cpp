@@ -33,7 +33,9 @@ namespace kml {
     std::string ComplementarySet::toStringASCII() const { return complementOf->toStringASCII() + "'"; }
     std::unique_ptr<Set> ComplementarySet::getComplementOf() { return complementOf->clone(); }
 
-    
+    bool ComplementarySet::contains(const std::any& element) {
+        return !complementOf->contains(element);
+    }
 
     bool ComplementarySet::_isSubset(const Set& set) const {
         return  false;// ComplementarySet(set).isSubset(ComplementarySet::complementOf); // <--- Schnittmenge vom Original und set empty?

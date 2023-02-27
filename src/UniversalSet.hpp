@@ -7,7 +7,7 @@
 namespace kml {
     class UniversalSet : public Set {
     public:
-        template <typename T> bool contains(const T) { return true; }
+        bool contains(const std::any&) { return true; }
         UniversalSet() { isinf = true; id = "universal"; }
         bool isEmpty() const { return false; }
         std::string toString() const { return "𝕌"; }

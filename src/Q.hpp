@@ -2,14 +2,14 @@
     #define Q_SET
     #include <memory>
     #include <string>
-    #include <type_traits>
+    #include "typeid_typetraits.hpp"
     #include "Set.hpp"
 
 namespace kml {
     // Set of rational numbers
     class Q : public Set {
     public:
-        template <typename T> bool contains(const T) { return std::is_arithmetic<T>::value; }
+        bool contains(const std::any& element) { return isArithmetic(element.type()); }
         Q() { isinf = true; id = "q"; }
         bool isEmpty() const { return false; }
         std::string toString() const { return "ℚ"; }

@@ -17,24 +17,52 @@ namespace kml {
 
     bool Intervall::isEmpty() const { return min > max || (min >= max && !(minIncl && maxIncl)); }
 
-    bool Intervall::contains(double element) {
-        return ((minIncl && element >= min) || (!minIncl && element > min)) || ((maxIncl && element <= max) || (!maxIncl && element < max));
-    }
-
-    bool Intervall::contains(float element) {
-        return ((minIncl && element >= min) || (!minIncl && element > min)) || ((maxIncl && element <= max) || (!maxIncl && element < max));
-    }
-
-    bool Intervall::contains(int element) {
-        return ((minIncl && element >= min) || (!minIncl && element > min)) || ((maxIncl && element <= max) || (!maxIncl && element < max));
-    }
-
-    bool Intervall::contains(long int element) {
-        return ((minIncl && element >= min) || (!minIncl && element > min)) || ((maxIncl && element <= max) || (!maxIncl && element < max));
-    }
-
-    bool Intervall::contains(long long int element) {
-        return ((minIncl && element >= min) || (!minIncl && element > min)) || ((maxIncl && element <= max) || (!maxIncl && element < max));
+    bool Intervall::contains(const std::any& element) {
+        if(element.type() == typeid(short int)) {
+            short int e = std::any_cast<short int>(element);
+            return ((minIncl && e >= min) || (!minIncl && e > min)) && ((maxIncl && e <= max) || (!maxIncl && e < max));
+        }
+        else if(element.type() == typeid(unsigned short int)) {
+            unsigned short int e = std::any_cast<unsigned short int>(element);
+            return ((minIncl && e >= min) || (!minIncl && e > min)) && ((maxIncl && e <= max) || (!maxIncl && e < max));
+        }
+        else if(element.type() == typeid(int)) {
+            int e = std::any_cast<int>(element);
+            return ((minIncl && e >= min) || (!minIncl && e > min)) && ((maxIncl && e <= max) || (!maxIncl && e < max));
+        }
+        else if(element.type() == typeid(unsigned int)) {
+            unsigned int e = std::any_cast<unsigned int>(element);
+            return ((minIncl && e >= min) || (!minIncl && e > min)) && ((maxIncl && e <= max) || (!maxIncl && e < max));
+        }
+        else if(element.type() == typeid(long int)) {
+            long int e = std::any_cast<long int>(element);
+            return ((minIncl && e >= min) || (!minIncl && e > min)) && ((maxIncl && e <= max) || (!maxIncl && e < max));
+        }
+        else if(element.type() == typeid(unsigned long int)) {
+            unsigned long int e = std::any_cast<unsigned long int>(element);
+            return ((minIncl && e >= min) || (!minIncl && e > min)) && ((maxIncl && e <= max) || (!maxIncl && e < max));
+        }
+        else if(element.type() == typeid(long long int)) {
+            long long int e = std::any_cast<long long int>(element);
+            return ((minIncl && e >= min) || (!minIncl && e > min)) && ((maxIncl && e <= max) || (!maxIncl && e < max));
+        }
+        else if(element.type() == typeid(unsigned long long int)) {
+            unsigned long long int e = std::any_cast<unsigned long long int>(element);
+            return ((minIncl && e >= min) || (!minIncl && e > min)) && ((maxIncl && e <= max) || (!maxIncl && e < max));
+        }
+        else if(element.type() == typeid(float)){
+            float e = std::any_cast<float>(element);
+            return ((minIncl && e >= min) || (!minIncl && e > min)) && ((maxIncl && e <= max) || (!maxIncl && e < max));
+        }
+        else if(element.type() == typeid(double)) {
+            double e = std::any_cast<double>(element);
+            return ((minIncl && e >= min) || (!minIncl && e > min)) && ((maxIncl && e <= max) || (!maxIncl && e < max));
+        }
+        else if(element.type() == typeid(long double)) {
+            long double e = std::any_cast<long double>(element);
+            return ((minIncl && e >= min) || (!minIncl && e > min)) && ((maxIncl && e <= max) || (!maxIncl && e < max));
+        }
+        else return false;
     }
 
     bool Intervall::_isSubset(const Q&) const { return true; }
@@ -44,10 +72,10 @@ namespace kml {
             && (((intv.getMaxInclude() || !maxIncl) && max <= intv.getMax()) || (maxIncl && !intv.getMaxInclude() && max > intv.getMax()));
     }
 
-    bool Intervall::_isSubset(const AntiIntervall& aintv) const {
+    /*bool Intervall::_isSubset(const AntiIntervall& aintv) const {
         return (max < aintv.getLow() || (max <= aintv.getLow() && !(maxIncl && !aintv.getLowInclude())))
             && (min > aintv.getHigh() || (min >= aintv.getHigh() && !(minIncl && !aintv.getHighInclude())));
-    }
+    }*/
 
     bool Intervall::_isSubset(const Set&) const { return false; }  
 

@@ -18,9 +18,7 @@ namespace kml {
         bool isEmpty() const;
         std::string toString() const;
         std::string toStringASCII() const;
-        template <typename T> bool contains(const T element) {
-            return !complementOf->contains(element);
-        }
+        bool contains(const std::any& element);
         static std::unique_ptr<Set> complementary(const std::unique_ptr<Set>&);
         std::unique_ptr<Set> getComplementOf();
         virtual std::unique_ptr<Set> clone() const;
