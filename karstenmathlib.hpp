@@ -2,19 +2,17 @@
 //#include <functional>
 #include "src/Set.hpp"
 #include "src/Intervall.hpp"
-#include "src/AntiIntervall.hpp"
 #include "src/ComplementarySet.hpp"
 #include "src/EmptySet.hpp"
-#ifndef UNIVERSALSET 
-    #define UNIVERSALSET
-    #include "src/UniversalSet.hpp"
-#endif
+#include "src/UniversalSet.hpp"
 #include "src/N.hpp"
 #include "src/N0.hpp"
 #include "src/Z.hpp"
 #include "src/Q.hpp"
 
-
+#include "src/sum.hpp"
+#include "src/product.hpp"
+#include "src/factorial.hpp"
 
     
 

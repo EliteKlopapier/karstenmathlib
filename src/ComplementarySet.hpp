@@ -10,31 +10,23 @@
 
 namespace kml {
     class ComplementarySet : public Set {
+    private:
+        ComplementarySet(const std::unique_ptr<Set>&);
+        bool _isSubset(const Set&) const;
+        const std::unique_ptr<Set>& complementOf;
     public:
         bool isEmpty() const;
         std::string toString() const;
         std::string toStringASCII() const;
-        template <typename T> bool contains(const T);
-        static std::unique_ptr<UniversalSet> Complementary(EmptySet&);
-        static std::unique_ptr<EmptySet> Complementary(UniversalSet&);
-        static std::unique_ptr<Set> Complementary(ComplementarySet&);
-        static std::unique_ptr<AntiIntervall> Complementary(Intervall&);
-        static std::unique_ptr<Intervall> Complementary(AntiIntervall&); 
-        static std::unique_ptr<ComplementarySet> Complementary(Set&);
+        template <typename T> bool contains(const T element) {
+            return !complementOf->contains(element);
+        }
+        static std::unique_ptr<Set> complementary(const std::unique_ptr<Set>&);
         std::unique_ptr<Set> getComplementOf();
         virtual std::unique_ptr<Set> clone() const;
-    private:
-        ComplementarySet(const Set&);
-        bool _isSubset(const Set&) const;
-        const Set& complementOf;
     };
 
-    std::unique_ptr<UniversalSet> operator!(EmptySet&);
-    std::unique_ptr<EmptySet> operator!(UniversalSet&);
-    std::unique_ptr<Set> operator!(ComplementarySet&);
-    std::unique_ptr<AntiIntervall> operator!(Intervall&);
-    std::unique_ptr<Intervall> operator!(AntiIntervall&);
-    std::unique_ptr<ComplementarySet> operator!(Set&);
+    std::unique_ptr<Set> operator!(const std::unique_ptr<Set>&);
     
 }
 #endif // ifndef COMPLEMENTARYSET
